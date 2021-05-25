@@ -1,0 +1,45 @@
+<%- include ('layout/header.ejs') %>
+
+<div class="register">
+   <form method="post" action="/register">
+      <input
+         class="login"
+         type="text"
+         placeholder="Login"
+         value=""
+         name="name"
+      />
+      <input class="login" type="mail" placeholder="Email adress" name="mail" />
+      <input
+         class="password"
+         type="password"
+         placeholder="Password"
+         name="password"
+      />
+      <input
+         class="retri_password"
+         type="password"
+         placeholder="Repeat password"
+         name="passwordCompare"
+      /><br />
+
+      <button class="register_button" type="submit">Register</button>
+      <br />
+      <% if (typeof(message) !== "undefined") { %>
+      <h2><%= message %></h2>
+      <% } %>
+   </form>
+</div>
+<div class="login-form">
+   <form method="post" action="/login">
+      <input type="text" name="mail" class="mail" placeholder="Mail" />
+      <input
+         type="password"
+         name="password"
+         class="password"
+         placeholder="Password"
+      />
+      <input type="submit" class="button" value="Sing in" />
+   </form>
+</div>
+<%- include ('layout/footer.ejs') %>
