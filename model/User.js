@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const config = require('../config');
 
 const userShema = mongoose.Schema({
    name: String,
@@ -14,9 +13,9 @@ userShema.methods = {
          let { _id, mail } = this;
          let accessToken = jwt.sign(
             { user: { _id, mail } },
-            config.ACCESS_TOKEN_SECRET,
+            process.env.ACCESS_TOKEN_SECRET,
             {
-               expiresIn: '15s',
+               expiresIn: '60s',
             }
          );
          return accessToken;
@@ -30,7 +29,7 @@ userShema.methods = {
          let { _id, mail } = this;
          let refreshToken = jwt.sign(
             { user: { _id, mail } },
-            config.REFRESH_TOKEN_SECRET
+            process.env.REFRESH_TOKEN_SECRET
          );
          return refreshToken;
       } catch (error) {

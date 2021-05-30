@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const routhAuth = require('./routh/auth');
-
+require('dotenv').config();
 app.set('view engine', 'ejs');
 
 app.use(express.json());
