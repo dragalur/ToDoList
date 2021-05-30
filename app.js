@@ -10,7 +10,7 @@ app.use(
       extended: true,
    })
 );
-
+let c = 0;
 app.get('/', (res, req) => {
    req.send('qgr;qrgubrqgbu');
 });
