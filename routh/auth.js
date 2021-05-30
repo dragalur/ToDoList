@@ -16,5 +16,5 @@ routh.get('/card', midlvare, (req, res) => {
    res.render('card');
    console.log(req.user);
 });
-
+let c = 0;
 module.exports = routh;
