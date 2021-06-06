@@ -1,46 +1,224 @@
-body {
+* {
   margin: 0;
   padding: 0;
-  background-color: green;
+  font-family: 'Squada One';
 }
 
-.card {
-  margin: 50px auto;
-  width: 300px;
-  height: 100px;
-  border: 1px solid black;
-  border-radius: 10px;
+.header {
+  height: 60px;
+  background-color: black;
+  padding: 5px 50px;
 }
 
-.name {
-  font-size: 16px;
-  margin: 10px;
-  color: red;
+.header .logo-bloc {
+  width: 150px;
+  height: 50px;
 }
 
-.register {
-  width: 300px;
-  height: 400px;
-  margin: 100px auto;
-  border: 1px solid black;
+.header .logo-bloc img {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper-greating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.greating-bloc {
+  background-color: #00ff6a;
+  background: no-repeat 100% url("../images/heroimg.svg") #00ff6a;
+  width: calc(100% - 370px);
+  height: calc(100vh - 120px);
   float: left;
 }
 
-.register .register_button {
-  width: 100px;
-  height: 30px;
-  border-radius: 20px;
-  border: 2px solid black;
-  font-size: 18px;
-  background-color: none;
-  outline: none;
-  margin: 20px auto;
+.log-bloc {
+  position: relative;
+  background-color: #00ff6a;
+  width: 380px;
+  float: right;
 }
 
-.login-form {
-  width: 300px;
-  height: 400px;
-  margin: 100px auto;
-  border: 1px solid black;
-  float: right;
+.contaiter-logReg {
+  width: calc(100% - 30px);
+  margin: 0 auto;
+}
+
+.reg-log-form {
+  width: 350px;
+  height: 270px;
+  padding-top: 20px;
+  border-radius: 10px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  text-align: center;
+  background-color: #2d2e2d;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.reg-log-form form {
+  position: relative;
+}
+
+.reg-log-form .text {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.reg-log-form .user-field {
+  width: 80%;
+  height: 40px;
+  margin: 5px 0;
+  padding: 0 10px;
+  background-color: #181818;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+.reg-log-form .user-field::-webkit-input-placeholder {
+  color: #9e9d9d;
+}
+
+.reg-log-form .user-field:-ms-input-placeholder {
+  color: #9e9d9d;
+}
+
+.reg-log-form .user-field::-ms-input-placeholder {
+  color: #9e9d9d;
+}
+
+.reg-log-form .user-field::placeholder {
+  color: #9e9d9d;
+}
+
+.reg-log-form .button {
+  width: 30%;
+  height: 30px;
+  background-color: #00ff6a;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.login-bloc {
+  position: absolute;
+}
+
+.register-bloc {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.btn {
+  width: 150px;
+  height: 60px;
+  margin: 30px auto;
+  cursor: pointer;
+}
+
+.btn .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.btn .text p {
+  font-size: 22px;
+  color: black;
+}
+
+.btn .line {
+  margin: 10px auto;
+  width: 70px;
+  height: 12px;
+  background-color: black;
+  border-radius: 20px;
+}
+
+.btn .circle {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: -8px;
+  background-color: #02f7e3;
+  border-radius: 50%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-transition: 1s;
+  transition: 1s;
+  border: 2px solid black;
+}
+
+.btn .circle img {
+  width: 70%;
+  height: 70%;
+  -webkit-transform: rotate(230deg);
+          transform: rotate(230deg);
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #3f3f3f;
+  border-top: 1px solid white;
+}
+
+.footer .author {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  font-size: 22px;
+}
+
+.footer .contacts {
+  width: 200px;
+  height: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer .contacts .item {
+  width: 35px;
+  height: 35px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  border-radius: 5px;
+}
+
+.footer .contacts .item img {
+  width: 100%;
+  height: 100%;
+}
+
+.footer .contacts .item:hover {
+  background-color: #02f7e3;
 }

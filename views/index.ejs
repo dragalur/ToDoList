@@ -1,45 +1,71 @@
 <%- include ('layout/header.ejs') %>
 
-<div class="register">
-   <form method="post" action="/register">
-      <input
-         class="login"
-         type="text"
-         placeholder="Login"
-         value=""
-         name="name"
-      />
-      <input class="login" type="mail" placeholder="Email adress" name="mail" />
-      <input
-         class="password"
-         type="password"
-         placeholder="Password"
-         name="password"
-      />
-      <input
-         class="retri_password"
-         type="password"
-         placeholder="Repeat password"
-         name="passwordCompare"
-      /><br />
-
-      <button class="register_button" type="submit">Register</button>
-      <br />
+<!-- <div class="register">
+   
       <% if (typeof(message) !== "undefined") { %>
       <h2><%= message %></h2>
       <% } %>
    </form>
 </div>
-<div class="login-form">
-   <form method="post" action="/login">
-      <input type="text" name="mail" class="mail" placeholder="Mail" />
-      <input
-         type="password"
-         name="password"
-         class="password"
-         placeholder="Password"
-      />
-      <input type="submit" class="button" value="Sing in" />
-   </form>
+<div class="login-form"> -->
+   
+</div>
+<div class="wrapper-greating">
+   <div class="greating-bloc"></div>
+   <div class="log-bloc">
+      <div class="btn" id="btn">
+         <div class="text">
+            <p>LOG IN</p>
+            <p>SING IN</p>
+         </div>
+         <div class="line" id="line">
+            <div class="circle" id="circle"><img id="arrow" src="../images/arrow.svg" alt="" /></div>
+         </div>
+      </div>
+      <div class="contaiter-logReg">
+         <div class="login-bloc reg-log-form" id="log">
+            <form action="/login" method="post"id="log" class="login-bloc">
+               <p class="text">Log in</p>
+               <input
+                  class="user-field email"
+                  type="text"
+                  placeholder="Your Email"
+                  id="email"
+                  name="mail"
+               />
+               <input class="user-field" type="password" placeholder="Your Password" name="password" />
+               <input class="button" type="submit" value="Submit" id="button" />
+               <p class="text">
+                  <%=typeof errorLog!='undefined' ? errorLog : '' %>
+               </p>
+            </form>
+         </div>
+         <div class="register-bloc reg-log-form" id="reg">
+            <form method="post" action="/register">
+               <p class="text">Sing in</p>
+               <!-- <input class="login" type="text" placeholder="Login" value="" name="name" /> -->
+               <input class="user-field email" type="text" placeholder="Your Email" name="mail" />
+               <input
+                  class="user-field"
+                  type="password"
+                  placeholder="Your Password"
+                  id="pas"
+                  name="password"
+               />
+               <input
+                  class="user-field"
+                  type="password"
+                  placeholder="Repeat Your Password"
+                  id="pasRet"
+               />
+               <input class="button" type="submit" value="Submit" id="button" />
+               <p class='text'> 
+                  <%=typeof errorReg!='undefined' ? errorReg : '' %>
+                  </p> 
+            </form>
+         </div>
+      </div>
+   </div>
 </div>
 <%- include ('layout/footer.ejs') %>
+<script src="../js/index.js"></script>

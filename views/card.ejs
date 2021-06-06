@@ -1,1 +1,11 @@
-<h2>Example</h2>
+<%- include ('layout/header.ejs') %>
+<div class="card-block">
+   <ul>
+      <% if(!cards){ %>
+      <li>Empty</li>
+      <% }else {for(const i of cards){ %>
+      <li><%= i.name %></li>
+      <% }}%>
+   </ul>
+</div>
+<%- include ('layout/footer.ejs') %>
