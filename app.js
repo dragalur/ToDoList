@@ -24,7 +24,7 @@ app.use('/', routhAuth);
 app.use('/', routhCard);
 
 app.get('/', (res, req) => {
-   req.redirect('/register');
+   req.redirect('/auth');
 });
 
 module.exports = app;
