@@ -1,11 +1,12 @@
 const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
 //const mongoose = require('mongoose');
 const User = require('../model/User');
 
 const option = {
    jwtFromRequest: () => localStorage.getItem('token'),
    secretOrKey: process.env.ACCESS_TOKEN_SECRET,
+   usernameField: 'mail',
+   passwordField: 'password',
 };
 
 module.exports = (passport) => {

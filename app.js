@@ -20,11 +20,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 
-app.use('/', routhAuth);
-app.use('/', routhCard);
-
 app.get('/', (res, req) => {
    req.redirect('/auth');
 });
+
+app.use('/', routhAuth);
+app.use('/', routhCard);
 
 module.exports = app;
