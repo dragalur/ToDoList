@@ -3,8 +3,7 @@ const express = require('express');
 const routh = require('express').Router();
 const controller = require('../controllers/card');
 
-routh.get('/card', passport.authenticate('jwt', { session: false }), controller.showCard);
+routh.get('/card?:table', passport.authenticate('jwt', { session: false }), controller.showPage);
 
-routh.post('/card', passport.authenticate('jwt', { session: false }), controller.createCard);
-
+// routh.post('/home', passport.authenticate('jwt', { session: false }), controller.createCard);
 module.exports = routh;

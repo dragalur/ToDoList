@@ -34,7 +34,7 @@ routh.post(
    controller.login,
    passport.authenticate('jwt', {
       session: false,
-      successRedirect: '/card',
+      successRedirect: '/home',
       failureRedirect: '/auth',
    })
 );

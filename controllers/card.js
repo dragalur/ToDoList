@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 const Card = require('../model/Card');
 
-module.exports.showCard = async function (req, res) {
-   const card = await Card.findById(req.user._id);
-   res.render('card', { cards: card.cardList });
+module.exports.showPage = async function (req, res) {
+   // console.log(req.query);
+   // console.log(req.user);
+
+   const table = await Card.findById({ _id: req.user._id });
+   const list = table.cardList.filter((i) => i.name === req.query.table)[0];
+   console.log(list);
+   res.render('card');
 };
 
 module.exports.createCard = async function (req, res) {

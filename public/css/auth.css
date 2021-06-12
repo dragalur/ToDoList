@@ -1,25 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Squada One';
-}
-
-.header {
-  height: 60px;
-  background-color: black;
-  padding: 5px 50px;
-}
-
-.header .logo-bloc {
-  width: 150px;
-  height: 50px;
-}
-
-.header .logo-bloc img {
-  width: 100%;
-  height: 100%;
-}
-
 .wrapper-greating {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -172,53 +150,4 @@
           transform: rotate(230deg);
   -webkit-transition: 1s;
   transition: 1s;
-}
-
-.footer {
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #3f3f3f;
-  border-top: 1px solid white;
-}
-
-.footer .author {
-  position: absolute;
-  right: 10px;
-  bottom: 0;
-  font-size: 22px;
-}
-
-.footer .contacts {
-  width: 200px;
-  height: 100%;
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.footer .contacts .item {
-  width: 35px;
-  height: 35px;
-  -webkit-transition: 1s;
-  transition: 1s;
-  border-radius: 5px;
-}
-
-.footer .contacts .item img {
-  width: 100%;
-  height: 100%;
-}
-
-.footer .contacts .item:hover {
-  background-color: #02f7e3;
 }

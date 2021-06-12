@@ -1,0 +1,187 @@
+.wrapper-card {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+.wrapper-card .card-log {
+  font-size: 30px;
+  margin: 10px 0 0 70px;
+  display: inline-block;
+}
+
+.wrapper-card .error {
+  font-size: 30px;
+  color: #ff0707;
+}
+
+.wrapper-card .card-block {
+  width: 90%;
+  min-height: 80%;
+  margin: 10px auto;
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+.wrapper-card .card-block .card-flex {
+  width: 98%;
+  height: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-column-gap: 1.5%;
+          column-gap: 1.5%;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+}
+
+.wrapper-card .card-block .card-flex .item {
+  width: 15%;
+  height: 80px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.wrapper-card .card-block .card-flex .item .link {
+  display: inline-block;
+  width: calc(100% - 10px);
+  height: 100%;
+  text-decoration: none;
+  color: black;
+  font-size: 26px;
+  padding-left: 10px;
+}
+
+.wrapper-card .card-block .card-flex .item-card {
+  border: 2px solid black;
+}
+
+.wrapper-card .card-block .card-flex .item-card:hover {
+  background-color: #00ffdd;
+}
+
+.wrapper-card .card-block .card-flex .add-block {
+  position: relative;
+  border-radius: 10px;
+  border: 2px dashed rgba(0, 0, 0, 0.712);
+}
+
+.wrapper-card .card-block .card-flex .add-item {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: #e7e7e7;
+  text-align: center;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.wrapper-card .card-block .card-flex .add-item .text {
+  padding-top: 5px;
+  font-size: 24px;
+  color: black;
+}
+
+.wrapper-card .card-block .card-flex .add-item .plus {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)), -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)), none;
+  background: linear-gradient(#000, #000), linear-gradient(#000, #000), none;
+  background-position: center;
+  background-size: 50% 3px, 3px 50%;
+  background-repeat: no-repeat;
+}
+
+.wrapper-card .card-block .card-flex .add-item:hover {
+  background-color: #6b6b6b;
+}
+
+.wrapper-card .card-block .card-flex .create-block {
+  width: 100%;
+  height: 100%;
+  background-color: #00b7ff;
+  position: absolute;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  top: -10px;
+}
+
+.wrapper-card .card-block .card-flex .create-block .close {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.wrapper-card .card-block .card-flex .create-block .close:before,
+.wrapper-card .card-block .card-flex .create-block .close:after {
+  position: absolute;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #ffff;
+}
+
+.wrapper-card .card-block .card-flex .create-block .close:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.wrapper-card .card-block .card-flex .create-block .close:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.wrapper-card .card-block .card-flex .create-block p {
+  float: left;
+  font-size: 22px;
+  padding: 5px 0 0 5px;
+}
+
+.wrapper-card .card-block .card-flex .create-block input[type='text'] {
+  width: 90%;
+  height: 25px;
+  padding-left: 10px;
+  font-size: 24px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+.wrapper-card .card-block .card-flex .create-block input[type='submit'] {
+  width: 50%;
+  height: 20px;
+  margin-top: 4px;
+  background-color: #75fc07;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.wrapper-card .card-block .card-flex .create-block input[type='submit']:hover {
+  background-color: #fbff00;
+}

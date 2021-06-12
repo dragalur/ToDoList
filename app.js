@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 const routhAuth = require('./routh/auth');
+const routhHome = require('./routh/home');
 const routhCard = require('./routh/card');
 require('dotenv').config();
 
@@ -25,6 +26,7 @@ app.get('/', (res, req) => {
 });
 
 app.use('/', routhAuth);
+app.use('/', routhHome);
 app.use('/', routhCard);
 
 module.exports = app;
