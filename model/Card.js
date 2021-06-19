@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const count = mongoose.Schema(
    {
       name: String,
-      field: [String],
+      fields: [String]
    },
    { _id: false }
 );
@@ -10,14 +10,14 @@ const count = mongoose.Schema(
 const card = mongoose.Schema(
    {
       name: String,
-      table: [count],
+      table: [count]
    },
    { _id: false }
 );
 
 const cardShema = mongoose.Schema({
    _id: mongoose.ObjectId,
-   cardList: [card],
+   cardList: [card]
 });
 
 module.exports = mongoose.model('cards', cardShema);

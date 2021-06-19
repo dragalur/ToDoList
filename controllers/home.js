@@ -9,14 +9,16 @@ module.exports.showCard = async function (req, res) {
 
 module.exports.createCard = async function (req, res) {
    const errors = validationResult(req);
-   if (!errors.isEmpty()) return res.render('home', { error: errors.errors[0].msg });
+   if (!errors.isEmpty()) return res.json({ error: errors.errors[0].msg });
+   console.log(req.body);
 
    try {
       const update = await Card.findOneAndUpdate(
-         { _id: card._id },
+         { _id: req.user._id },
          { $push: { cardList: { name: req.body.name } } },
          { new: true, useFindAndModify: false }
       );
+      res.status(200).json(update.cardList);
    } catch (e) {
       console.log(e);
    }

@@ -3,7 +3,7 @@ const app = express();
 const passport = require('passport');
 const routhAuth = require('./routh/auth');
 const routhHome = require('./routh/home');
-const routhCard = require('./routh/card');
+const routhTable = require('./routh/table');
 require('dotenv').config();
 
 app.set('view engine', 'ejs');
@@ -27,6 +27,6 @@ app.get('/', (res, req) => {
 
 app.use('/', routhAuth);
 app.use('/', routhHome);
-app.use('/', routhCard);
+app.use('/', routhTable);
 
 module.exports = app;

@@ -5,6 +5,7 @@ const { validationResult } = require('express-validator');
 
 module.exports.login = async function (req, res, next) {
    const errors = validationResult(req);
+   // if (!errors.isEmpty()) return res.send({ errorLog: errors.errors[0].msg });
    if (!errors.isEmpty()) return res.render('auth', { errorLog: errors.errors[0].msg });
 
    const candidate = await User.findOne({ mail: req.body.mail });

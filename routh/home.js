@@ -9,9 +9,12 @@ routh.get('/home', passport.authenticate('jwt', { session: false }), controller.
 
 routh.post(
    '/home',
-   passport.authenticate('jwt', { session: false }),
+   passport.authenticate('jwt', {
+      session: false
+   }),
    body('name').custom(async (value, { req }) => {
-      return await Card.findById(req.user._id).then((card) => {
+      return await Card.findById(req.user._id).then(card => {
+         console.log('ad;ug;q');
          for (let i of card.cardList) {
             if (i.name === value) return Promise.reject('Name of table already exists');
          }

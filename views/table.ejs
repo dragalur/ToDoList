@@ -1,0 +1,73 @@
+<%- include ('layout/header.ejs') %>
+
+<div class="wrapper">
+   <div class="wrapper-header">
+      <div class="return-button"><p>Return back</p></div>
+      <div class="name" id="blockName">
+         <p id="name"><%= name %></p>
+         <input
+            type="text"
+            id="fieldName"
+            onkeydown="this.style.width = ((this.value.length + 1) * 8) + 'px';"
+         />
+      </div>
+   </div>
+   <div class="wrapper-tables">
+      <% for(let i of table){ %>
+      <div class="column">
+         <div class="column-header">
+            <div class="nameTable" id="nameTable">
+               <p id="nameOfTable"><%= i.name %></p>
+               <input type="text" id="nameTableField" />
+            </div>
+            <div class="close delete" onclick="deleteColumnShow(this)"></div>
+            <div class="delete-message">
+               <button class="yes" onclick="deleteColumn(this)">Yes</button>
+               <p>Delete column?</p>
+               <button class="no" onclick="deleteColumnClose(this)">No</button>
+            </div>
+         </div>
+         <div class="notices-block">
+
+         <% if(i.fields !== undefined){ 
+            for(let notice of i.fields){%> 
+               
+            <div class="notice" id="notice" draggable="true">
+               <div class="text">
+                  <p><%= notice %></p>
+                  <input class="notisField" type="text" />
+               </div>
+               <div class="edit" onclick="editNoticeText(event);"></div>
+            </div>
+         <% } }%>
+      </div>
+
+         <div class="add-notice">
+            <div class="add-notice-button-bloc" onclick="showFieldAddNotice(this)">
+               <div class="plus"></div>
+               <p>Add new notice</p>
+            </div>
+            <div class="new-notice-text">
+               <input type="text" />
+               <div class="save" onclick="addNotice(this)"></div>
+               <div class="cancel" onclick="closeFieldAddNotice(this)"></div>
+            </div>
+         </div>
+      </div>
+      <% } %>
+      <div class="add">
+         <div class="add-column" id="add-block">
+            <div class="plus"></div>
+            <p>Add new column</p>
+         </div>
+         <div class="create-column" id="create-block">
+            <input type="text" placeholder="Entere name of column" />
+            <button type="button">Create</button>
+            <div class="close" id="close"></div>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+<script src="js/table.js"></script>
+</html>

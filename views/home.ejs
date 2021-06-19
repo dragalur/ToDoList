@@ -3,12 +3,12 @@
 <div class="wrapper-card">
    <p class="card-log">Your notices list</p>
 
-   <span class="error"><%= typeof error != 'undefined' ? error : '' %>  </span>
+   <span class="error" id="error"></span>
    <div class="card-block">
       <div class="card-flex">
          <% if(typeof cards != 'undefined'){ for(const i of cards){ %>
          <div class="item-card item">
-            <a href="./card?table=<%= i.name %>" class="link"><%= i.name %></a>
+            <a href="./table?table=<%= i.name %>" class="link"><%= i.name %></a>
          </div>
          <% }}%>
          <div class="add-block item">
@@ -17,11 +17,13 @@
                <div class="plus"></div>
             </div>
             <div class="create-block item" id="add-block">
-               <form method="post">
+               <form method="post" onsubmit="return test();">
                   <p>Table name</p>
                   <div class="close" id="close"></div>
-                  <input type="text" name='name'  />
-                  <input type="submit" value="Create" />
+                  <input type="text" name='name' id='name' />
+                  <button type="button" id="bt">Add</button>
+
+                  <!-- <input type="submit" value="Create"  /> -->
                </form>
             </div>
          </div>
@@ -30,4 +32,4 @@
 </div>
 
 <%- include ('layout/footer.ejs') %>
-<script src="../js/home.js"></script>
+<script type="module" src="../js/home.js" ></script>

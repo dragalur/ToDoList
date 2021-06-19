@@ -1,0 +1,490 @@
+.wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  background: url("../images/library.jpg");
+  padding: 0 10px;
+  font-family: 'Squada One';
+}
+
+.wrapper .wrapper-header {
+  width: auto;
+  height: 30px;
+  padding: 5px 15px;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 20px;
+  gap: 5px;
+  color: white;
+}
+
+.wrapper .wrapper-header P {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: center;
+}
+
+.wrapper .wrapper-header .return-button {
+  width: 100px;
+  height: 100%;
+  border-radius: 3px;
+  background-color: rgba(233, 233, 233, 0.39);
+}
+
+.wrapper .wrapper-header .return-button:hover {
+  background-color: #4343eb;
+}
+
+.wrapper .wrapper-header .name,
+.wrapper .wrapper-header input {
+  min-width: 60px;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.wrapper .wrapper-header .name {
+  background-color: rgba(233, 233, 233, 0.39);
+  position: relative;
+}
+
+.wrapper .wrapper-header .name:hover {
+  background-color: rgba(151, 151, 151, 0.911);
+}
+
+.wrapper .wrapper-header input {
+  border: 2px solid blue;
+  width: 60px;
+  height: calc(30px - 4px);
+  font-size: 20px;
+  text-indent: 5px;
+  outline: none;
+  position: absolute;
+  top: 0;
+  display: none;
+}
+
+.wrapper .wrapper-tables {
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+}
+
+.wrapper .wrapper-tables .column {
+  width: 250px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #dad8d8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wrapper .wrapper-tables .column .nameTable {
+  width: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-size: 18px;
+  float: left;
+  cursor: pointer;
+}
+
+.wrapper .wrapper-tables .column .nameTable p {
+  margin-left: 5px;
+}
+
+.wrapper .wrapper-tables .column .nameTable input[type='text'] {
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  border-radius: 3px;
+  border: 2px solid blue;
+  background-color: #fff;
+  outline: none;
+  text-indent: 10px;
+  font-size: 18px;
+  display: none;
+}
+
+.wrapper .wrapper-tables .column .delete {
+  width: 20px;
+  height: 20px;
+  background-color: #a1a1a1;
+  float: right;
+}
+
+.wrapper .wrapper-tables .column .close:before,
+.wrapper .wrapper-tables .column .close:after {
+  left: 9px;
+}
+
+.wrapper .wrapper-tables .column .delete-message {
+  position: absolute;
+  right: 0;
+  width: 150px;
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: black;
+  gap: 3px;
+  font-size: 17px;
+  border: 2px solid #ff7b00;
+  border-radius: 3px;
+  display: none;
+}
+
+.wrapper .wrapper-tables .column .delete-message button {
+  height: 100%;
+  width: 30px;
+  font-size: 18px;
+  border: 1px solid black;
+  border-radius: 3px;
+  outline: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+}
+
+.wrapper .wrapper-tables .column .delete-message p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  color: #ffae00;
+}
+
+.wrapper .wrapper-tables .column .delete-message .yes {
+  background-color: red;
+}
+
+.wrapper .wrapper-tables .column .delete-message .no {
+  background-color: #0004ff;
+}
+
+.wrapper .wrapper-tables .column .delete-message button:hover {
+  background-color: #dfdfdf;
+}
+
+.wrapper .wrapper-tables .plus {
+  width: 30px;
+  height: 30px;
+  float: left;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)), -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)), none;
+  background: linear-gradient(#000, #000), linear-gradient(#000, #000), none;
+  background-position: center;
+  background-size: 50% 3px, 3px 50%;
+  background-repeat: no-repeat;
+}
+
+.wrapper .wrapper-tables .add {
+  width: 200px;
+}
+
+.wrapper .wrapper-tables .add .create-column-button {
+  height: 35px;
+  font-size: 20px;
+}
+
+.wrapper .wrapper-tables .add .add-column {
+  width: 100%;
+  height: 35px;
+  background-color: rgba(233, 233, 233, 0.39);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 4;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.wrapper .wrapper-tables .add .add-column:hover {
+  background-color: rgba(255, 255, 255, 0.699);
+}
+
+.wrapper .wrapper-tables .add .create-column {
+  background-color: rgba(233, 233, 233, 0.39);
+  border-radius: 3px;
+  padding: 4px;
+  float: left;
+  position: relative;
+  top: -35px;
+  display: none;
+}
+
+.wrapper .wrapper-tables .add .create-column input[type='text'] {
+  width: calc(100% - 4px);
+  height: 30px;
+  margin: 4px 0;
+  border-radius: 3px;
+  border: 2px solid blue;
+  background-color: #fff;
+  outline: none;
+  text-indent: 10px;
+  font-size: 20px;
+}
+
+.wrapper .wrapper-tables .add .create-column button {
+  width: 50%;
+  height: 25px;
+  font-size: 20px;
+  border-radius: 3px;
+  margin-right: 4px;
+  border: none;
+  background-color: blue;
+  color: white;
+  float: left;
+}
+
+.wrapper .wrapper-tables .add .create-column button:hover {
+  background-color: #5252d3;
+}
+
+.wrapper .wrapper-tables .close {
+  width: 25px;
+  height: 25px;
+  background-color: rgba(233, 233, 233, 0.39);
+  border-radius: 3px;
+  cursor: pointer;
+  float: left;
+  position: relative;
+}
+
+.wrapper .wrapper-tables .close:hover {
+  background-color: #b8b8b8;
+}
+
+.wrapper .wrapper-tables .close:before,
+.wrapper .wrapper-tables .close:after {
+  content: ' ';
+  height: inherit;
+  width: 2px;
+  position: absolute;
+  left: 11px;
+  background-color: #363636;
+}
+
+.wrapper .wrapper-tables .close:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.wrapper .wrapper-tables .close:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.column-header {
+  height: 25px;
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.notices-block {
+  height: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+
+.notices-block .notice {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  height: 20px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.notices-block .notice .text {
+  height: 100%;
+  max-width: 90%;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  overflow: hidden;
+}
+
+.notices-block .notice .text p {
+  margin-left: 5px;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+.notices-block .notice .text input[type='text'] {
+  width: 100%;
+  height: 100%;
+  text-indent: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid blue;
+  font-size: 16px;
+  display: none;
+}
+
+.notices-block .notice .edit {
+  height: 100%;
+  width: 10%;
+  border-radius: 3px;
+}
+
+.notices-block .notice .edit img {
+  width: 70%;
+  height: 70%;
+}
+
+.notices-block .notice:hover {
+  background-color: #e9e9e9;
+}
+
+.notices-block .notice:hover .edit {
+  background: 60%/60% no-repeat url(../images/edit.svg);
+}
+
+.notices-block .notice:hover .edit:hover {
+  background-color: white;
+}
+
+.notices-block .notice11 {
+  height: 30px;
+  border: 2px solid red;
+}
+
+.notices-block .hide {
+  -webkit-transition: 0.01s;
+  transition: 0.01s;
+  -webkit-transform: translateX(-9999px);
+          transform: translateX(-9999px);
+}
+
+.add-notice {
+  height: 30px;
+  margin-top: 5px;
+  background-color: rgba(255, 255, 255, 0);
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  border-radius: 5px;
+  position: relative;
+}
+
+.add-notice .add-notice-button-bloc {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  z-index: 4;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.add-notice .add-notice-button-bloc:hover {
+  background-color: #e6e6e6;
+  border-radius: 5px;
+}
+
+.add-notice .new-notice-text {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  background-color: green;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding-right: 3px;
+  display: none;
+  z-index: 20;
+}
+
+.add-notice .new-notice-text input[type='text'] {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  border-radius: 3px;
+  border: 2px solid blue;
+  text-indent: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.add-notice .new-notice-text .save,
+.add-notice .new-notice-text .cancel {
+  width: 25px;
+  height: 25px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.add-notice .new-notice-text .cancel {
+  background: 90%/90% no-repeat url(../images/delete.svg);
+}
+
+.add-notice .new-notice-text .save {
+  background: 90%/90% no-repeat url(../images/save.svg);
+}
+
+.add-notice .new-notice-text .save:hover,
+.add-notice .new-notice-text .cancel:hover {
+  background-color: white;
+}
