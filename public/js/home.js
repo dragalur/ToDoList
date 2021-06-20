@@ -12,32 +12,18 @@ closeBt.addEventListener('click', function () {
    addBlock.style.transform = 'rotateX(180deg)';
 });
 
-// (async () => {
-//    await fetch('/home', {
-//       method: 'POST',
-//       body: JSON.stringify({ name: 'FromClient' }),
-//       headers: { 'Content-Type': 'application/json' },
-//    })
-//       .then((response) => {
-//          console.log(response);
-//          return response.json();
-//       })
-//       .then((data) => console.log(data));
-// })();
-
 const buttonAddCard = document.getElementById('bt');
 
 buttonAddCard.addEventListener('click', async function () {
-   // add(document.getElementById('name').value);
    await fetch('/home', {
       method: 'POST',
       body: JSON.stringify({ name: document.getElementById('name').value }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' }
    })
-      .then((response) => {
+      .then(response => {
          return response.json();
       })
-      .then((data) => {
+      .then(data => {
          if (Array.isArray(data)) createCard(data[data.length - 1].name);
          errorText(data.error);
       });
@@ -47,12 +33,12 @@ async function add(name) {
    await fetch('/home', {
       method: 'POST',
       body: JSON.stringify({ name: name }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' }
    })
-      .then((response) => {
+      .then(response => {
          return response.json();
       })
-      .then((data) => {
+      .then(data => {
          if (Array.isArray(data)) createCard(data[data.length - 1].name);
          errorText(data.error);
       });

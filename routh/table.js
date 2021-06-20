@@ -4,5 +4,9 @@ const controller = require('../controllers/table');
 
 routh.get('/table?:table', passport.authenticate('jwt', { session: false }), controller.showPage);
 
-// routh.post('/table', passport.authenticate('jwt', { session: false }), controller.createCard);
+routh.put(
+   '/table/:table',
+   passport.authenticate('jwt', { session: false }),
+   controller.updateTable
+);
 module.exports = routh;

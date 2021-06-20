@@ -20,4 +20,10 @@ const cardShema = mongoose.Schema({
    cardList: [card]
 });
 
+cardShema.methods = {
+   findTable: function (name) {
+      return this.cardList.filter(i => i.name === name)[0];
+   }
+};
+
 module.exports = mongoose.model('cards', cardShema);

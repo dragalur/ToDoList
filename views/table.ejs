@@ -2,7 +2,7 @@
 
 <div class="wrapper">
    <div class="wrapper-header">
-      <div class="return-button"><p>Return back</p></div>
+      <div class="return-button" onclick="updateTable()"><p>Return back</p></div>
       <div class="name" id="blockName">
          <p id="name"><%= name %></p>
          <input
@@ -17,7 +17,7 @@
       <div class="column">
          <div class="column-header">
             <div class="nameTable" id="nameTable">
-               <p id="nameOfTable"><%= i.name %></p>
+               <p class="nameOfTable" id="nameOfTable"><%= i.name %></p>
                <input type="text" id="nameTableField" />
             </div>
             <div class="close delete" onclick="deleteColumnShow(this)"></div>

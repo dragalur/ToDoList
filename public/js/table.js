@@ -25,7 +25,7 @@ function createColumn(text, elem) {
    const form = ` <div class="column">
    <div class="column-header">
       <div class="nameTable" id="nameTable">
-         <p id="nameOfTable">${text}</p>
+         <p class="nameOfTable" id="nameOfTable">${text}</p>
          <input type="text" id="nameTableField" />
       </div>
       <div class="close delete" onclick="deleteColumnShow(this)"></div>
@@ -131,6 +131,34 @@ function deleteColumn(e) {
    e.parentElement.parentElement.parentElement.remove();
 }
 
+async function updateTable() {
+   const name = document.getElementById('name').innerText;
+   const nameOfTable = document.getElementsByClassName('nameOfTable');
+   const noticeBlock = document.getElementsByClassName('notices-block');
+
+   let noticeObject = [];
+   for (let i = 0; i < noticeBlock.length; i++) {
+      const nameOfTableText = nameOfTable[i].innerText;
+      const arraTextNotice = Array.prototype.map.call(
+         noticeBlock[i].children,
+         elem => elem.children[0].innerText
+      );
+
+      noticeObject.push({ name: nameOfTableText, fields: arraTextNotice });
+   }
+   const nameFromUrl = new URLSearchParams(window.location.search).get('table');
+   updateRequest({ name: name, table: noticeObject }, nameFromUrl)
+      .then(response => response.json())
+      .then(e => console.log(e));
+}
+
+async function updateRequest(obj, name) {
+   return await fetch('/table/' + name, {
+      method: 'PUT',
+      body: JSON.stringify(obj),
+      headers: { 'Content-Type': 'application/json' }
+   });
+}
 //==========================================
 //==========================================
 //==========================================

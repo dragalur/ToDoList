@@ -5,7 +5,6 @@ const { validationResult } = require('express-validator');
 
 module.exports.login = async function (req, res, next) {
    const errors = validationResult(req);
-   // if (!errors.isEmpty()) return res.send({ errorLog: errors.errors[0].msg });
    if (!errors.isEmpty()) return res.render('auth', { errorLog: errors.errors[0].msg });
 
    const candidate = await User.findOne({ mail: req.body.mail });
@@ -26,10 +25,10 @@ module.exports.register = async function (req, res) {
    const user = new User({
       name: name,
       mail: mail,
-      password: bcrypt.hashSync(password, salt),
+      password: bcrypt.hashSync(password, salt)
    });
    try {
-      await user.save().then((doc) => new Card({ _id: doc._id }).save());
+      await user.save().then(doc => new Card({ _id: doc._id }).save());
       res.render('auth', { errorLog: 'You have registered and can log in' });
    } catch (e) {
       console.log(e);
