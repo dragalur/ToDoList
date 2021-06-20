@@ -11,12 +11,11 @@ module.exports.updateTable = async function (req, res) {
    try {
       const table = await Card.findById({ _id: req.user._id });
       const list = table.findTable(req.params.table);
-      console.log(table);
       const newData = req.body;
       // console.log('data', newData);
       // console.log('query', req.params.table);
-      const update = await table.updateOne(
-         { cardList: { $name: req.params.table } },
+      const update = await Card.updateMany(
+         { _id: req.user._id, 'cardList.name': req.params.table },
          { $set: { 'cardList.$.name': newData.name, 'cardList.$.table': newData.table } },
          { new: true }
       );

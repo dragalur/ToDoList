@@ -46,7 +46,7 @@ async function add(name) {
 
 function createCard(name) {
    const form = `<div class="item-card item">
-   <a href="./card?table=${name}" class="link">${name}</a>
+   <a href="./table?table=${name}" class="link">${name}</a>
       </div>`;
    let div = document.createRange().createContextualFragment(form);
    const lastDiv = document.getElementsByClassName('item-card');
