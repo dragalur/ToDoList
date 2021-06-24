@@ -1,6 +1,5 @@
 <%- include ('layout/header.ejs') %>
 
-</div>
 <div class="wrapper-greating">
    <div class="greating-bloc"></div>
    <div class="log-bloc">
@@ -10,7 +9,9 @@
             <p>SING IN</p>
          </div>
          <div class="line" id="line">
-            <div class="circle" id="circle"><img id="arrow" src="../images/arrow.svg" alt="" /></div>
+            <div class="circle" id="circle">
+               <img id="arrow" src="../images/arrow.svg" alt="" />
+            </div>
          </div>
       </div>
       <div class="contaiter-logReg">
@@ -24,11 +25,14 @@
                   id="email"
                   name="mail"
                />
-               <input class="user-field" type="password" placeholder="Your Password" name="password" />
-               <input class="button" type="submit" value="Submit" id="button" />
-               <p class="text">
-                  <%=typeof errorLog!='undefined' ? errorLog : '' %>
-               </p>
+               <input
+                  class="user-field"
+                  type="password"
+                  placeholder="Your Password"
+                  name="password"
+               />
+               <input class="button" type="button" value="Submit" id="button" />
+               <p class="text"><%=typeof errorLog!='undefined' ? errorLog : '' %></p>
             </form>
          </div>
          <div class="register-bloc reg-log-form" id="reg">
@@ -50,9 +54,7 @@
                   id="pasRet"
                />
                <input class="button" type="submit" value="Submit" id="button" />
-               <p class='text'> 
-                  <%=typeof errorReg!='undefined' ? errorReg : '' %>
-                  </p> 
+               <p class="text"><%=typeof errorReg!='undefined' ? errorReg : '' %></p>
             </form>
          </div>
       </div>
@@ -60,4 +62,4 @@
 </div>
 
 <%- include ('layout/footer.ejs') %>
-<script src="../js/auth.js"></script>
+<script type="module" src="../js/auth.js"></script>

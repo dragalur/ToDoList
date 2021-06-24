@@ -1,4 +1,7 @@
 .wrapper-greating {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8,7 +11,6 @@
   background-color: #00ff6a;
   background: no-repeat 100% url("../images/heroimg.svg") #00ff6a;
   width: calc(100% - 370px);
-  height: calc(100vh - 120px);
   float: left;
 }
 

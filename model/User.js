@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const userShema = mongoose.Schema({
    name: String,
    password: String,
-   mail: String,
+   mail: String
 });
 
 userShema.methods = {
@@ -12,8 +12,14 @@ userShema.methods = {
       try {
          let { _id, mail } = this;
          let accessToken = jwt.sign({ user: { _id, mail } }, process.env.ACCESS_TOKEN_SECRET, {
-            expiresIn: 60 * 60,
+            expiresIn: 60 * 60
          });
+
+         let time = new Date();
+         time.setHours(time.getHours() + 1);
+         localStorage.setItem('tokenTime', time);
+         localStorage.setItem('token', accessToken);
+
          return accessToken;
       } catch (error) {
          console.error(error);
@@ -29,7 +35,7 @@ userShema.methods = {
          console.error(error);
          return;
       }
-   },
+   }
 };
 
 module.exports = mongoose.model('users', userShema);

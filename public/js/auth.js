@@ -1,3 +1,5 @@
+import { clientQuery } from './query.mjs';
+
 document.getElementById('footer').style.backgroundColor = 'rgb(0, 255, 106)';
 
 const btn = document.getElementById('btn');
@@ -44,7 +46,7 @@ const email = document.getElementsByClassName('email');
 const button = document.getElementsByClassName('button');
 
 for (let i = 0; i < email.length; i++)
-   email[i].addEventListener('input', (e) => {
+   email[i].addEventListener('input', e => {
       if (e.target.value === null) {
          email[i].style.borderColor = 'transparent';
          button[i].disabled = true;
@@ -60,10 +62,10 @@ for (let i = 0; i < email.length; i++)
 const passwordRetri = document.getElementById('pasRet');
 const password = document.getElementById('pas');
 
-passwordRetri.addEventListener('input', (e) => passwordChec(e));
-password.addEventListener('input', (e) => passwordChec(e));
+passwordRetri.addEventListener('input', () => passwordChec());
+password.addEventListener('input', () => passwordChec());
 
-function passwordChec(e) {
+function passwordChec() {
    if (passwordRetri.value === password.value) {
       passwordRetri.style.borderColor = 'transparent';
       button[1].disabled = false;
@@ -71,4 +73,32 @@ function passwordChec(e) {
       passwordRetri.style.borderColor = 'red';
       button[1].disabled = true;
    }
+}
+// function queryRequest(e) {
+//    const password = e.previousElementSibling.value;
+//    const mail = e.previousElementSibling.previousElementSibling.value;
+//    const errorField = e.nextElementSibling;
+
+//    clientQuery('/login', 'POST', { mail: mail, password: password }).catch(
+//       err => (errorField.innerText = err)
+//    );
+//    // console.log(mail, password);
+// }
+const buttonForQuery = document.getElementsByClassName('button');
+for (let i of buttonForQuery) {
+   i.addEventListener('click', function (e) {
+      const password = e.target.previousElementSibling.value;
+      const mail = e.target.previousElementSibling.previousElementSibling.value;
+      const errorField = e.target.nextElementSibling;
+
+      clientQuery('/login', 'POST', { mail: mail, password: password })
+         .then(response => {
+            if (response.redirected) window.location.href = response.url;
+            else return response.json();
+         })
+         .then(data => {
+            if (data.errorLog != null) errorField.innerText = data.errorLog;
+         })
+         .catch(err => console.log(err));
+   });
 }

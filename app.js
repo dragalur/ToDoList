@@ -4,6 +4,8 @@ const passport = require('passport');
 const routhAuth = require('./routh/auth');
 const routhHome = require('./routh/home');
 const routhTable = require('./routh/table');
+const checkUser = require('./middlware/checkUser');
+
 require('dotenv').config();
 
 app.set('view engine', 'ejs');
@@ -24,9 +26,13 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (res, req) => {
    req.redirect('/auth');
 });
+app.get('/*', checkUser);
 
 app.use('/', routhAuth);
 app.use('/', routhHome);
 app.use('/', routhTable);
+app.use(function (req, res) {
+   res.redirect('/home');
+});
 
 module.exports = app;
