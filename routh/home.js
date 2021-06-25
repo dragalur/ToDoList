@@ -21,7 +21,6 @@ routh.post(
 
    body('name').custom(async (value, { req }) => {
       return await Card.findById(req.user._id).then(card => {
-         //TODO: fix on array method
          for (let i of card.cardList) {
             if (i.name === value) return Promise.reject('Name of table already exists');
          }

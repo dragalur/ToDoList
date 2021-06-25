@@ -5,7 +5,7 @@ const { validationResult } = require('express-validator');
 
 module.exports.login = async function (req, res, next) {
    const errors = validationResult(req);
-   if (!errors.isEmpty()) return res.status(400).json({ errorLog: errors.errors[0].msg });
+   if (!errors.isEmpty()) return res.status(400).json({ error: errors.errors[0].msg });
    const candidate = await User.findOne({ mail: req.body.mail });
 
    await candidate.createAcessToken();
@@ -16,7 +16,7 @@ module.exports.login = async function (req, res, next) {
 
 module.exports.register = async function (req, res) {
    const errors = validationResult(req);
-   if (!errors.isEmpty()) return res.render('auth', { errorReg: errors.errors[0].msg });
+   if (!errors.isEmpty()) return res.json({ error: errors.errors[0].msg });
 
    const { mail, password } = req.body;
    const salt = bcrypt.genSaltSync(10);
@@ -26,7 +26,7 @@ module.exports.register = async function (req, res) {
    });
    try {
       await user.save().then(doc => new Card({ _id: doc._id }).save());
-      res.render('auth', { errorLog: 'You have registered and can log in' });
+      res.status(200).json({ error: 'You have registered and can log in' });
    } catch (e) {
       console.log(e);
    }

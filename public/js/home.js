@@ -1,4 +1,3 @@
-import { clientQuery } from './query.mjs';
 const addB = document.getElementById('add-item');
 const addBlock = document.getElementById('add-block');
 const closeBt = document.getElementById('close');
@@ -24,10 +23,17 @@ buttonAddCard.addEventListener('click', function () {
    //    .then(response => {
    //       return response.json();
    //    })
-   clientQuery('/home', 'POST', { name: document.getElementById('name').value }).then(data => {
-      if (Array.isArray(data)) createCard(data[data.length - 1].name);
-      errorText(data.error);
-   });
+   fetch('/home', {
+      method: 'POST',
+      body: JSON.stringify({ name: document.getElementById('name').value }),
+      headers: { 'Content-Type': 'application/json' }
+   })
+      .then(response => response.json())
+      .then(data => {
+         // if (Array.isArray(data)) createCard(data[data.length - 1].name);
+         !!Array.isArray(data) && createCard(data[data.length - 1].name);
+         errorText(data.error);
+      });
 });
 
 // async function add(name) {

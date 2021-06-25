@@ -131,7 +131,7 @@ function deleteColumn(e) {
    e.parentElement.parentElement.parentElement.remove();
 }
 
-async function updateTable() {
+function updateTable() {
    const name = document.getElementById('name').innerText;
    const nameOfTable = document.getElementsByClassName('nameOfTable');
    const noticeBlock = document.getElementsByClassName('notices-block');
@@ -153,7 +153,7 @@ async function updateTable() {
 }
 
 async function updateRequest(obj, name) {
-   return await fetch('/table/' + name, {
+   return await fetch('/home/table/' + name, {
       method: 'PUT',
       body: JSON.stringify(obj),
       headers: { 'Content-Type': 'application/json' }

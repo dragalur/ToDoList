@@ -16,8 +16,8 @@ userShema.methods = {
          });
 
          let time = new Date();
-         time.setHours(time.getHours() + 1);
-         localStorage.setItem('tokenTime', time);
+         time.setSeconds(time.getSeconds() + 60 * 60);
+         localStorage.setItem('tokenTime', Date.parse(time));
          localStorage.setItem('token', accessToken);
 
          return accessToken;
