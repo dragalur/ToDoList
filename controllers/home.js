@@ -10,7 +10,6 @@ module.exports.showCard = async function (req, res) {
 module.exports.createCard = async function (req, res) {
    const errors = validationResult(req);
    if (!errors.isEmpty()) return res.json({ error: errors.errors[0].msg });
-   console.log(req.body);
 
    try {
       const update = await Card.findOneAndUpdate(

@@ -25,7 +25,7 @@
 
 .wrapper-card .card-block .card-flex {
   width: 98%;
-  height: 100%;
+  min-height: 80%;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;

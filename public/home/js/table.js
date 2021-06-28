@@ -21,6 +21,10 @@ createBlock.children[1].addEventListener('click', () => {
    }
 });
 
+function cameBack() {
+   location.href = './home';
+}
+
 function createColumn(text, elem) {
    const form = ` <div class="column">
    <div class="column-header">
@@ -125,14 +129,13 @@ function deleteColumnShow(e) {
 }
 function deleteColumnClose(e) {
    e.parentElement.style.display = 'none';
-   // console.log(e.parentElement);
 }
 function deleteColumn(e) {
    e.parentElement.parentElement.parentElement.remove();
+   // updateTable();
 }
 
-function updateTable() {
-   const name = document.getElementById('name').innerText;
+function getDataFromTable() {
    const nameOfTable = document.getElementsByClassName('nameOfTable');
    const noticeBlock = document.getElementsByClassName('notices-block');
 
@@ -146,10 +149,16 @@ function updateTable() {
 
       noticeObject.push({ name: nameOfTableText, fields: arraTextNotice });
    }
+   return noticeObject;
+}
+
+async function updateTable() {
+   console.log('word');
+
+   const name = document.getElementById('name').innerText;
+   const noticeObject = getDataFromTable();
    const nameFromUrl = new URLSearchParams(window.location.search).get('table');
-   updateRequest({ name: name, table: noticeObject }, nameFromUrl)
-      .then(response => response.json())
-      .then(e => console.log(e));
+   await updateRequest({ name: name, table: noticeObject }, nameFromUrl);
 }
 
 async function updateRequest(obj, name) {
@@ -159,89 +168,11 @@ async function updateRequest(obj, name) {
       headers: { 'Content-Type': 'application/json' }
    });
 }
-//==========================================
-//==========================================
-//==========================================
 
-// let notice = document.getElementsByClassName('notice');
-// for (let i of notice) {
-//    i.add;
-// }
-// const dropTarget = document.getElementById('notices-block');
-// const dragables = document.getElementsByClassName('notice');
-
-// for(let item of dragables){
-//    item.addEventListener("dragstart", function(ev){
-//       ev.dataTransfer.setData("srcId", ev.target.id);
-//     });
-// }
-
-// dropTarget.addEventListener('drop', function(ev) {
-//    ev.preventDefault();
-//    let target = ev.target;
-//    let droppable  = target.classList.contains('drag-box');
-//    let srcId = ev.dataTransfer.getData("srcId");
-
-//    if (droppable) {
-//      ev.target.appendChild(document.getElementById(srcId));
-//    }
-//  });
-
-// const blok = document
-//    .createRange()
-//    .createContextualFragment(`<div class="notice11" id="notice" ></div>`);
-
-// const dropTarget = document.getElementById('notices-block');
-// const dragables = document.getElementsByClassName('notice');
-
-// function allowDrop(ev) {
-//    ev.preventDefault(); // default is not to allow drop
-//    console.log(ev);
-//    ev.dataTransfer.dropEffect = 'move';
-// }
-// function dragStart(ev) {
-//    ev.dataTransfer.setData('text/plain', ev.target.id);
-//    //document.getElementById(ev.target.id).parentNode.replaceChild(blok,document.getElementById(ev.target.id));
-// }
-// for (let item of dragables) {
-//    item.addEventListener('dragstart', function (ev) {
-//       // ev.dataTransfer.setData("srcId", ev.target.id);
-//       ev.dataTransfer.setData('elemId', ev.target.id);
-//       ev.dataTransfer.setData('htmlElem', ev.target);
-//       ev.target.classList.add('hide');
-//       //   ev.target.style.transform = "translate(-9999px)";
-//       //   (ev.target).parentNode.removeChild(ev.target);
-//       console.log(ev.target);
-//    });
-// }
-
-// dropTarget.addEventListener('ondragover', function (ev) {
-//    ev.preventDefault();
-//    ev.dataTransfer.dropEffect = 'move';
-// });
-// // dropTarget.addEventListener('drop', function (ev) {
-// //    ev.preventDefault();
-// //    let target = ev.target;
-// //    let droppable = target.classList.contains('notice');
-// //    let srcId = ev.dataTransfer.getData('text/plain');
-
-// //    // Получить id целевого элемента и добавить перемещаемый элемент в его DOM
-// //    const data = ev.dataTransfer.getData('elemId');
-// //    ev.target.appendChild(document.getElementById(data));
-// // });
-
-// for (let item of dragables) {
-//    item.addEventListener('drop', function (ev) {
-//       ev.preventDefault();
-//       let target = ev.target;
-//       let droppable = target.classList.contains('notice');
-//       let srcId = ev.dataTransfer.getData('text/plain');
-
-//       // Получить id целевого элемента и добавить перемещаемый элемент в его DOM
-//       const data = ev.dataTransfer.getData('elemId');
-//       ev.target.appendChild(document.getElementById(data));
-//       // if (droppable) {
-//       //    ev.target.appendChild(document.getElementById(srcId));
-//       // }
-//    });
-// }
+window.onblur = updateTable;
+window.onbeforeunload = async evt => {
+   evt.preventDefault();
+   await updateTable();
+   evt.returnValue = '';
+   return null;
+};

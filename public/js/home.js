@@ -15,14 +15,6 @@ closeBt.addEventListener('click', function () {
 const buttonAddCard = document.getElementById('bt');
 
 buttonAddCard.addEventListener('click', function () {
-   //  fetch('/home', {
-   //    method: 'POST',
-   //    body: JSON.stringify({ name: document.getElementById('name').value }),
-   //    headers: { 'Content-Type': 'application/json' }
-   // })
-   //    .then(response => {
-   //       return response.json();
-   //    })
    fetch('/home', {
       method: 'POST',
       body: JSON.stringify({ name: document.getElementById('name').value }),
@@ -36,24 +28,9 @@ buttonAddCard.addEventListener('click', function () {
       });
 });
 
-// async function add(name) {
-//    await fetch('/home', {
-//       method: 'POST',
-//       body: JSON.stringify({ name: name }),
-//       headers: { 'Content-Type': 'application/json' }
-//    })
-//       .then(response => {
-//          return response.json();
-//       })
-//       .then(data => {
-//          if (Array.isArray(data)) createCard(data[data.length - 1].name);
-//          errorText(data.error);
-//       });
-// }
-
 function createCard(name) {
    const form = `<div class="item-card item">
-   <a href="./home/table?table=${name}" class="link">${name}</a>
+   <a href="./table?table=${name}" class="link">${name}</a>
       </div>`;
    let div = document.createRange().createContextualFragment(form);
    const lastDiv = document.getElementsByClassName('item-card');

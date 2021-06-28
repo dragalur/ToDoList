@@ -5,6 +5,7 @@
   background: url("../images/library.jpg");
   padding: 0 10px;
   font-family: 'Squada One';
+  overflow-y: auto;
 }
 
 .wrapper .wrapper-header {
@@ -43,7 +44,9 @@
 .wrapper .wrapper-header input {
   min-width: 60px;
   height: 100%;
+  padding: 0 5px;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .wrapper .wrapper-header .name {
@@ -57,18 +60,19 @@
 
 .wrapper .wrapper-header input {
   border: 2px solid blue;
-  width: 60px;
-  height: calc(30px - 4px);
+  width: 75px;
+  height: 30px;
   font-size: 20px;
   text-indent: 5px;
   outline: none;
   position: absolute;
   top: 0;
+  left: 0;
   display: none;
 }
 
 .wrapper .wrapper-tables {
-  height: 400px;
+  height: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -76,10 +80,12 @@
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 10px;
+  overflow-x: auto;
 }
 
 .wrapper .wrapper-tables .column {
-  width: 250px;
+  min-width: 250px;
+  max-height: 90%;
   padding: 10px;
   border-radius: 5px;
   background-color: #dad8d8;
@@ -194,7 +200,7 @@
 }
 
 .wrapper .wrapper-tables .add {
-  width: 200px;
+  min-width: 200px;
 }
 
 .wrapper .wrapper-tables .add .create-column-button {
@@ -294,6 +300,20 @@
 .wrapper .wrapper-tables .close:after {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+
+::-webkit-scrollbar {
+  width: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(252, 252, 252, 0.712);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(110, 110, 110, 0.712);
+  border-radius: 20px;
 }
 
 .column-header {
