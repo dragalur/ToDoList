@@ -1,11 +1,11 @@
 .wrapper {
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
   background: url("../images/library.jpg");
   padding: 0 10px;
   font-family: 'Squada One';
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .wrapper .wrapper-header {
@@ -34,6 +34,7 @@
   height: 100%;
   border-radius: 3px;
   background-color: rgba(233, 233, 233, 0.39);
+  cursor: pointer;
 }
 
 .wrapper .wrapper-header .return-button:hover {
@@ -85,6 +86,7 @@
 
 .wrapper .wrapper-tables .column {
   min-width: 250px;
+  max-width: 250px;
   max-height: 90%;
   padding: 10px;
   border-radius: 5px;
@@ -111,6 +113,8 @@
 
 .wrapper .wrapper-tables .column .nameTable p {
   margin-left: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wrapper .wrapper-tables .column .nameTable input[type='text'] {
@@ -302,16 +306,16 @@
           transform: rotate(-45deg);
 }
 
-::-webkit-scrollbar {
+.wrapper-tables::-webkit-scrollbar {
   width: 100%;
 }
 
-::-webkit-scrollbar-track {
+.wrapper-tables::-webkit-scrollbar-track {
   background-color: rgba(252, 252, 252, 0.712);
   border-radius: 20px;
 }
 
-::-webkit-scrollbar-thumb {
+.wrapper-tables::-webkit-scrollbar-thumb {
   background-color: rgba(110, 110, 110, 0.712);
   border-radius: 20px;
 }
@@ -325,24 +329,14 @@
 }
 
 .notices-block {
-  height: auto;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 0px;
-          flex: 1 0 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  overflow-y: auto;
+  display: block;
   gap: 5px;
 }
 
 .notices-block .notice {
   background-color: white;
+  margin-top: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -359,18 +353,19 @@
 
 .notices-block .notice .text {
   height: 100%;
-  max-width: 90%;
   position: relative;
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .notices-block .notice .text p {
   margin-left: 5px;
   font-size: 16px;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .notices-block .notice .text input[type='text'] {
@@ -421,6 +416,23 @@
   transition: 0.01s;
   -webkit-transform: translateX(-9999px);
           transform: translateX(-9999px);
+}
+
+.notices-block::-webkit-scrollbar {
+  width: 5px;
+  margin-left: 10px;
+}
+
+.notices-block::-webkit-scrollbar-track {
+  background-color: rgba(252, 252, 252, 0.712);
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.notices-block::-webkit-scrollbar-thumb {
+  background-color: rgba(110, 110, 110, 0.712);
+  border-radius: 20px;
+  margin-left: 10px;
 }
 
 .add-notice {

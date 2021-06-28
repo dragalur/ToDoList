@@ -1,10 +1,9 @@
 .wrapper {
-   flex: 1 0 auto;
+   flex: 1 0 0;
    background: url('../images/library.jpg');
    padding: 0 10px;
    font-family: 'Squada One';
-   overflow-y: auto;
-
+   overflow: hidden;
    .wrapper-header {
       width: auto;
       height: 30px;
@@ -25,6 +24,7 @@
          height: 100%;
          border-radius: 3px;
          background-color: rgba(233, 233, 233, 0.39);
+         cursor: pointer;
       }
       .return-button:hover {
          background-color: rgb(67, 67, 235);
@@ -68,6 +68,7 @@
 
       .column {
          min-width: 250px;
+         max-width: 250px;
          max-height: 90%;
          padding: 10px;
          border-radius: 5px;
@@ -83,6 +84,8 @@
             cursor: pointer;
             p {
                margin-left: 5px;
+               overflow: hidden;
+               text-overflow: ellipsis;
             }
             input[type='text'] {
                width: 100%;
@@ -243,14 +246,14 @@
       }
    }
 }
-::-webkit-scrollbar {
+.wrapper-tables::-webkit-scrollbar {
    width: 100%;
 }
-::-webkit-scrollbar-track {
+.wrapper-tables::-webkit-scrollbar-track {
    background-color: rgba(252, 252, 252, 0.712);
    border-radius: 20px;
 }
-::-webkit-scrollbar-thumb {
+.wrapper-tables::-webkit-scrollbar-thumb {
    background-color: rgba(110, 110, 110, 0.712);
    border-radius: 20px;
 }
@@ -261,33 +264,31 @@
    flex: 0 0 auto;
 }
 .notices-block {
-   height: auto;
-   flex: 1 0 0;
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: column;
+   overflow-y: auto;
+   display: block;
    gap: 5px;
    .notice {
       background-color: rgb(255, 255, 255);
+      margin-top: 5px;
       display: flex;
       align-items: center;
       gap: 5px;
       height: 20px;
-
       box-sizing: content-box;
       padding: 3px;
-      // margin: 5px 0;
       border-radius: 5px;
       .text {
          height: 100%;
-         max-width: 90%;
          position: relative;
-         flex: 1 0 auto;
+         flex: 1 0 0;
          overflow: hidden;
+         text-overflow: ellipsis;
+
          p {
             margin-left: 5px;
             font-size: 16px;
             overflow: hidden;
+            text-overflow: ellipsis;
          }
          input[type='text'] {
             width: 100%;
@@ -333,6 +334,20 @@
       transform: translateX(-9999px);
    }
 }
+.notices-block::-webkit-scrollbar {
+   width: 5px;
+   margin-left: 10px;
+}
+.notices-block::-webkit-scrollbar-track {
+   background-color: rgba(252, 252, 252, 0.712);
+   border-radius: 20px;
+   margin-left: 10px;
+}
+.notices-block::-webkit-scrollbar-thumb {
+   background-color: rgba(110, 110, 110, 0.712);
+   border-radius: 20px;
+   margin-left: 10px;
+}
 .add-notice {
    height: 30px;
    margin-top: 5px;
@@ -340,7 +355,6 @@
    flex: 0 0 auto;
    border-radius: 5px;
    position: relative;
-
    .add-notice-button-bloc {
       height: 100%;
       display: flex;
