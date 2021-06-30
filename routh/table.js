@@ -15,4 +15,6 @@ routh.put(
    passport.authenticate('jwt', { session: false }),
    controller.updateTable
 );
+
+routh.delete('/home/table/:table', controller.deleteTable);
 module.exports = routh;

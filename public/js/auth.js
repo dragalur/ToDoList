@@ -84,7 +84,6 @@ function query() {
       item.addEventListener('click', async function (e) {
          waitingOnRedirect(item, true);
          const errorField = e.target.nextElementSibling;
-         // let url = index == 0 ? '/login' : '/register';
          let password, mail, url;
 
          if (index == 0) {
@@ -122,8 +121,10 @@ function waitingOnRedirect(button, load) {
    if (load) {
       button.disabled = true;
       document.body.style.cursor = 'wait';
+      button.style.cursor = 'wait';
    } else {
       button.disabled = false;
       document.body.style.cursor = 'auto';
+      button.style.cursor = 'auto';
    }
 }

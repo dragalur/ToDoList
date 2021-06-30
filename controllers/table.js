@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const Card = require('../model/Card');
 
 module.exports.showPage = async function (req, res) {
@@ -17,6 +18,22 @@ module.exports.updateTable = async function (req, res) {
          { new: true }
       );
       res.status(200).json(update);
+   } catch (e) {
+      console.log(e);
+   }
+};
+
+module.exports.deleteTable = async function (req, res) {
+   try {
+      const id = jwt.verify(localStorage.getItem('token'), process.env.ACCESS_TOKEN_SECRET).user
+         ._id;
+      const deleteObject = await Card.updateMany(
+         { _id: id },
+         {
+            $pull: { cardList: { name: req.params.table } }
+         }
+      );
+      res.status(201).json(deleteObject);
    } catch (e) {
       console.log(e);
    }

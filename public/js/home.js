@@ -34,6 +34,7 @@ function createCard(name) {
       </div>`;
    let div = document.createRange().createContextualFragment(form);
    const lastDiv = document.getElementsByClassName('item-card');
+   //FIXME: change on card create table, because it doesn't work when list is empty'
    lastDiv[lastDiv.length - 1].parentNode.insertBefore(
       div,
       lastDiv[lastDiv.length - 1].nextSibling

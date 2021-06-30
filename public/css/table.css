@@ -11,11 +11,11 @@
 .wrapper .wrapper-header {
   width: auto;
   height: 30px;
-  padding: 5px 15px;
-  margin-bottom: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 5px 15px;
+  margin-bottom: 5px;
   font-size: 20px;
   gap: 5px;
   color: white;
@@ -70,6 +70,75 @@
   top: 0;
   left: 0;
   display: none;
+}
+
+.wrapper .wrapper-header .block-delete {
+  width: 120px;
+  position: relative;
+  margin-left: auto;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.wrapper .wrapper-header .block-delete .delete {
+  background-color: rgba(233, 233, 233, 0.39);
+  border-radius: 3px;
+  height: 100%;
+}
+
+.wrapper .wrapper-header .block-delete .delete:hover {
+  background-color: rgba(255, 6, 6, 0.39);
+}
+
+.wrapper .wrapper-header .block-delete .delete-confirm {
+  width: 100px;
+  height: 100%;
+  border-radius: 3px;
+  padding: 0 5px;
+  position: absolute;
+  background-color: rgba(233, 233, 233, 0.39);
+  top: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  z-index: -1;
+  opacity: 0;
+}
+
+.wrapper .wrapper-header .block-delete .delete-confirm p {
+  text-align: center;
+  font-size: 18px;
+}
+
+.wrapper .wrapper-header .block-delete .delete-confirm button {
+  width: 40px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: blue;
+}
+
+.wrapper .wrapper-header .block-delete .delete-confirm button:hover {
+  background-color: #01ff6b;
+}
+
+.wrapper .wrapper-header .block-delete .delete-confirm .yes {
+  background-color: red;
+}
+
+.wrapper .wrapper-header .block-delete .delete-confirm .yes:hover {
+  background-color: #ff8800;
 }
 
 .wrapper .wrapper-tables {

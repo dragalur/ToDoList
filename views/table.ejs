@@ -11,6 +11,17 @@
             onkeydown="this.style.width = ((this.value.length + 1) * 8) + 'px';"
          />
       </div>
+      <div class="block-delete">
+         <div class="delete" id='blockDelete' >
+         <p>Delete notice</p>
+      </div>
+      <div class="delete-confirm">
+         <button class="yes" onclick="deleteTable()">Yes</button>
+         <button>No</button>
+
+      </div>
+      </div>
+      
    </div>
    <div class="wrapper-tables">
       <% for(let i of table){ %>

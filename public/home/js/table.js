@@ -1,25 +1,42 @@
-const createBlock = document.getElementById('create-block');
+(function () {
+   addBlock();
+   openDelete();
+   nameChangeEvent(document.getElementById('blockName'));
+   Array.prototype.forEach.call(document.getElementsByClassName('nameTable'), i =>
+      nameChangeEvent(i)
+   );
+   window.onblur = updateTable;
+   window.onbeforeunload = async evt => {
+      evt.preventDefault();
+      await updateTable();
+      evt.returnValue = '';
+      return null;
+   };
+})();
+function addBlock() {
+   const createBlock = document.getElementById('create-block');
 
-document.getElementById('add-block').addEventListener('click', () => {
-   createBlock.style.display = 'block';
-   createBlock.children[0].focus();
-});
-document
-   .getElementById('close')
-   .addEventListener('click', () => (createBlock.style.display = 'none'));
+   document.getElementById('add-block').addEventListener('click', () => {
+      createBlock.style.display = 'block';
+      createBlock.children[0].focus();
+   });
+   document
+      .getElementById('close')
+      .addEventListener('click', () => (createBlock.style.display = 'none'));
 
-createBlock.children[1].addEventListener('click', () => {
-   const input = createBlock.children[0];
-   if (!input.value.trim() == '') {
-      createColumn(input.value, createBlock.parentElement);
-      input.value = '';
-      input.placeholder = '';
-      createBlock.style.display = 'none';
-   } else {
-      input.placeholder = 'Enter name of column';
-      return;
-   }
-});
+   createBlock.children[1].addEventListener('click', () => {
+      const input = createBlock.children[0];
+      if (!input.value.trim() == '') {
+         createColumn(input.value, createBlock.parentElement);
+         input.value = '';
+         input.placeholder = '';
+         createBlock.style.display = 'none';
+      } else {
+         input.placeholder = 'Enter name of column';
+         return;
+      }
+   });
+}
 
 function cameBack() {
    location.href = './home';
@@ -57,19 +74,26 @@ function createColumn(text, elem) {
    elem.before(div);
 }
 
-const headerName = document.getElementById('blockName');
-nameChangeEvent(document.getElementById('blockName'));
-
-const nameAddColumn = document.getElementsByClassName('nameTable');
-Array.prototype.forEach.call(nameAddColumn, i => nameChangeEvent(i));
-
 function editNoticeText(ev) {
-   nameChangeEvent(ev.target.previousElementSibling, ev.target);
+   const p = ev.target.previousElementSibling.children[0];
+   const input = ev.target.previousElementSibling.children[1];
+
+   input.style.display = 'block';
+   input.value = p.innerHTML;
+   input.focus();
+
+   input.addEventListener('blur', () => {
+      input.style.display = 'none';
+      p.innerHTML = input.value;
+      if (input.className == 'notisField' && input.value.trim() == '')
+         blockName.parentElement.remove();
+   });
 }
 
 function nameChangeEvent(blockName, targetClick = blockName) {
    const p = blockName.children[0];
    const input = blockName.children[1];
+
    targetClick.addEventListener('click', () => {
       input.style.display = 'block';
       input.value = p.innerHTML;
@@ -81,7 +105,6 @@ function nameChangeEvent(blockName, targetClick = blockName) {
       p.innerHTML = input.value;
       if (input.className == 'notisField' && input.value.trim() == '')
          blockName.parentElement.remove();
-      //TODO: add update for name
    });
 }
 
@@ -92,7 +115,6 @@ function showFieldAddNotice(e) {
 
 function closeFieldAddNotice(e, input = null) {
    e.offsetParent.style.display = 'none';
-   // console.dir(e.parentElement.children[0]);
    if (!input === null) {
       input.value = '';
       input.placeholder = '';
@@ -132,7 +154,6 @@ function deleteColumnClose(e) {
 }
 function deleteColumn(e) {
    e.parentElement.parentElement.parentElement.remove();
-   // updateTable();
 }
 
 function getDataFromTable() {
@@ -153,8 +174,6 @@ function getDataFromTable() {
 }
 
 async function updateTable() {
-   console.log('word');
-
    const name = document.getElementById('name').innerText;
    const noticeObject = getDataFromTable();
    const nameFromUrl = new URLSearchParams(window.location.search).get('table');
@@ -169,10 +188,30 @@ async function updateRequest(obj, name) {
    });
 }
 
-window.onblur = updateTable;
-window.onbeforeunload = async evt => {
-   evt.preventDefault();
-   await updateTable();
-   evt.returnValue = '';
-   return null;
-};
+async function deleteTable() {
+   const nameFromUrl = new URLSearchParams(window.location.search).get('table');
+
+   await fetch('/home/table/' + nameFromUrl, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+   })
+      .then(response => response.json())
+      .then(e => {
+         if (e.ok) window.location.href = '/home';
+      })
+      .catch(e => console.log(e));
+}
+
+function openDelete() {
+   const buton = document.getElementById('blockDelete');
+   let confirmBlock = buton.nextElementSibling;
+
+   buton.addEventListener('click', () => {
+      confirmBlock.style.opacity = 1;
+      confirmBlock.style.transform = 'translateX(-110px)';
+   });
+   confirmBlock.children[1].addEventListener('click', () => {
+      confirmBlock.style.transform = 'translateX(0)';
+      confirmBlock.style.opacity = 0;
+   });
+}

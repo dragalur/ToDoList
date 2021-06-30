@@ -7,9 +7,9 @@
    .wrapper-header {
       width: auto;
       height: 30px;
+      display: flex;
       padding: 5px 15px;
       margin-bottom: 5px;
-      display: flex;
       font-size: 20px;
       gap: 5px;
       color: white;
@@ -55,6 +55,64 @@
          top: 0;
          left: 0;
          display: none;
+      }
+      .block-delete {
+         width: 120px;
+         position: relative;
+         margin-left: auto;
+         border-radius: 3px;
+         cursor: pointer;
+         z-index: 5;
+         .delete {
+            background-color: rgba(233, 233, 233, 0.39);
+            border-radius: 3px;
+            height: 100%;
+         }
+         .delete:hover {
+            background-color: rgba(255, 6, 6, 0.39);
+         }
+         .delete-confirm {
+            width: 100px;
+            height: 100%;
+            border-radius: 3px;
+            padding: 0 5px;
+            position: absolute;
+            background-color: rgba(233, 233, 233, 0.39);
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 1s;
+            z-index: -1;
+            opacity: 0;
+            // transform: translatex(-110px);
+            // display: none;
+            p {
+               text-align: center;
+               font-size: 18px;
+            }
+            button {
+               width: 40px;
+               height: 25px;
+               border: 1px solid black;
+               border-radius: 3px;
+               outline: none;
+               cursor: pointer;
+               font-size: 20px;
+               background-color: blue;
+            }
+            button:hover {
+               background-color: rgb(1, 255, 107);
+            }
+            .yes {
+               background-color: red;
+            }
+            .yes:hover {
+               background-color: rgb(255, 136, 0);
+            }
+            // display: none;
+         }
       }
    }
 
