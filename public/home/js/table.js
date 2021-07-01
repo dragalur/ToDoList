@@ -6,11 +6,10 @@
       nameChangeEvent(i)
    );
    window.onblur = updateTable;
-   window.onbeforeunload = async evt => {
+   window.onbeforeunload = evt => {
       evt.preventDefault();
-      await updateTable();
-      evt.returnValue = '';
-      return null;
+      updateTable();
+      return;
    };
 })();
 function addBlock() {
@@ -81,13 +80,6 @@ function editNoticeText(ev) {
    input.style.display = 'block';
    input.value = p.innerHTML;
    input.focus();
-
-   // input.addEventListener('blur', () => {
-   //    input.style.display = 'none';
-   //    p.innerHTML = input.value;
-   //    if (input.className == 'notisField' && input.value.trim() == '')
-   //       blockName.parentElement.remove();
-   // });
 }
 
 function inputBlurEvent(e) {
