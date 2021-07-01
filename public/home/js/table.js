@@ -47,7 +47,7 @@ function createColumn(text, elem) {
    <div class="column-header">
       <div class="nameTable" id="nameTable">
          <p class="nameOfTable" id="nameOfTable">${text}</p>
-         <input type="text" id="nameTableField" />
+         <input type="text" />
       </div>
       <div class="close delete" onclick="deleteColumnShow(this)"></div>
       <div class="delete-message">
@@ -82,12 +82,18 @@ function editNoticeText(ev) {
    input.value = p.innerHTML;
    input.focus();
 
-   input.addEventListener('blur', () => {
-      input.style.display = 'none';
-      p.innerHTML = input.value;
-      if (input.className == 'notisField' && input.value.trim() == '')
-         blockName.parentElement.remove();
-   });
+   // input.addEventListener('blur', () => {
+   //    input.style.display = 'none';
+   //    p.innerHTML = input.value;
+   //    if (input.className == 'notisField' && input.value.trim() == '')
+   //       blockName.parentElement.remove();
+   // });
+}
+
+function inputBlurEvent(e) {
+   e.style.display = 'none';
+   e.previousElementSibling.innerHTML = e.value;
+   e.value.trim() === '' && e.parentElement.parentElement.remove();
 }
 
 function nameChangeEvent(blockName, targetClick = blockName) {
@@ -138,7 +144,7 @@ function createNotice(text, elem) {
    const form = `<div class="notice" id="notice" draggable="true">
    <div class="text">
       <p>${text}</p>
-      <input class="notisField" type="text" />
+      <input class="notisField" type="text" onblur="inputBlurEvent(this)"/>
    </div>
    <div class="edit" onclick="editNoticeText(event);"></div>
 </div>`;
