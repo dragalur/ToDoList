@@ -17,13 +17,11 @@
                <div class="plus"></div>
             </div>
             <div class="create-block item" id="add-block">
-               <form method="post" onsubmit="return test();">
+               <form method="post" onkeypress="return event.keyCode != 13;">
                   <p>Table name</p>
                   <div class="close" id="close"></div>
                   <input type="text" name='name' id='name' />
                   <button type="button" id="bt">Add</button>
-
-                  <!-- <input type="submit" value="Create"  /> -->
                </form>
             </div>
          </div>

@@ -2,9 +2,9 @@
    addBlock();
    openDelete();
    nameChangeEvent(document.getElementById('blockName'));
-   Array.prototype.forEach.call(document.getElementsByClassName('nameTable'), i =>
-      nameChangeEvent(i)
-   );
+   // Array.prototype.forEach.call(document.getElementsByClassName('nameTable'), i =>
+   //    nameChangeEvent(i)
+   // );
    window.onblur = updateTable;
    window.onbeforeunload = evt => {
       evt.preventDefault();
@@ -44,9 +44,9 @@ function cameBack() {
 function createColumn(text, elem) {
    const form = ` <div class="column">
    <div class="column-header">
-      <div class="nameTable" id="nameTable">
+      <div class="nameTable" id="nameTable" onclick="editNoticeText(this, false)">
          <p class="nameOfTable" id="nameOfTable">${text}</p>
-         <input type="text" />
+         <input type="text" onblur="inputBlurEvent(e)" />
       </div>
       <div class="close delete" onclick="deleteColumnShow(this)"></div>
       <div class="delete-message">
@@ -73,9 +73,15 @@ function createColumn(text, elem) {
    elem.before(div);
 }
 
-function editNoticeText(ev) {
-   const p = ev.target.previousElementSibling.children[0];
-   const input = ev.target.previousElementSibling.children[1];
+function editNoticeText(ev, notice) {
+   let p, input;
+   if (notice) {
+      p = ev.previousElementSibling.children[0];
+      input = ev.previousElementSibling.children[1];
+   } else {
+      p = ev.children[0];
+      input = ev.children[1];
+   }
 
    input.style.display = 'block';
    input.value = p.innerHTML;
@@ -120,6 +126,7 @@ function closeFieldAddNotice(e, input = null) {
 }
 
 function addNotice(e) {
+   console.log('add');
    const tableNotice = e.offsetParent.offsetParent.previousElementSibling;
    const input = e.previousElementSibling;
    if (!input.value.trim() == '') createNotice(input.value, tableNotice);
@@ -133,12 +140,13 @@ function addNotice(e) {
 }
 
 function createNotice(text, elem) {
+   console.log(window.history);
    const form = `<div class="notice" id="notice" draggable="true">
    <div class="text">
       <p>${text}</p>
       <input class="notisField" type="text" onblur="inputBlurEvent(this)"/>
    </div>
-   <div class="edit" onclick="editNoticeText(event);"></div>
+   <div class="edit" onclick="editNoticeText(this, true);"></div>
 </div>`;
    let div = document.createRange().createContextualFragment(form);
    elem.appendChild(div);
@@ -195,7 +203,7 @@ async function deleteTable() {
    })
       .then(response => response.json())
       .then(e => {
-         if (e.ok) window.location.href = '/home';
+         !!e.ok && window.location.replace('/home');
       })
       .catch(e => console.log(e));
 }
