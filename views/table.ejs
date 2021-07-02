@@ -27,9 +27,9 @@
       <% for(let i of table){ %>
       <div class="column">
          <div class="column-header">
-            <div class="nameTable" id="nameTable">
+            <div class="nameTable" id="nameTable" onclick="editNoticeText(this,false)">
                <p class="nameOfTable" id="nameOfTable"><%= i.name %></p>
-               <input type="text"   />
+               <input type="text" onblur="inputBlurEvent(this)"  />
             </div>
             <div class="close delete" onclick="deleteColumnShow(this)"></div>
             <div class="delete-message">
@@ -48,7 +48,7 @@
                   <p><%= notice %></p>
                   <input class="notisField" type="text" onblur="inputBlurEvent(this)" />
                </div>
-               <div class="edit" onclick="editNoticeText(event);"></div>
+               <div class="edit" onclick="editNoticeText(this,true);"></div>
             </div>
          <% } }%>
       </div>

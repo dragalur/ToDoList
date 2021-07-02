@@ -103,7 +103,7 @@ function query() {
             headers: { 'Content-Type': 'application/json' }
          })
             .then(response => {
-               if (response.redirected) window.location.href = response.url;
+               if (response.redirected) window.location.replace(responce.url);
                else return response.json();
             })
             .then(data => {
